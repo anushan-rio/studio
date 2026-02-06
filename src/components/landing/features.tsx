@@ -50,7 +50,7 @@ export function Features() {
   return (
     <section id="features" className="py-20 sm:py-28">
       <div className="container">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center animate-fade-up">
           <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
             Everything You Need, All in One Place
           </h2>
@@ -60,8 +60,12 @@ export function Features() {
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <Card key={feature.title} className="p-2 transition-transform duration-300 hover:-translate-y-2">
+          {features.map((feature, index) => (
+            <Card 
+              key={feature.title} 
+              className="p-2 transition-transform duration-300 hover:-translate-y-2 animate-fade-up"
+              style={{ animationDelay: `${200 * (index + 2)}ms` }}
+            >
               <CardHeader>
                 <div className="mb-4">{feature.icon}</div>
                 <CardTitle>{feature.title}</CardTitle>
