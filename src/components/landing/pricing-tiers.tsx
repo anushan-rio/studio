@@ -77,7 +77,7 @@ export function PricingTiers() {
           {tiers.map((tier) => (
             <Card
               key={tier.name}
-              className={`flex flex-col ${tier.isPopular ? "border-primary ring-2 ring-primary" : ""}`}
+              className={`flex flex-col transition-transform duration-300 hover:-translate-y-2 ${tier.isPopular ? "border-primary ring-2 ring-primary" : ""}`}
             >
               <CardHeader className={tier.isPopular ? "bg-primary/5" : ""}>
                 <CardTitle>{tier.name}</CardTitle>

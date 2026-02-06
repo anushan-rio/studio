@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Timer, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ModeToggle } from "./mode-toggle";
 
 export function Header() {
   return (
@@ -51,7 +52,8 @@ export function Header() {
               </SheetContent>
             </Sheet>
           </div>
-          <nav className="flex items-center">
+          <nav className="flex items-center gap-2">
+            <ModeToggle />
             <Button asChild>
               <Link href="/login">Get Started</Link>
             </Button>

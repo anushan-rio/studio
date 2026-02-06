@@ -61,7 +61,7 @@ export function Features() {
         </div>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
-            <Card key={feature.title} className="p-2">
+            <Card key={feature.title} className="p-2 transition-transform duration-300 hover:-translate-y-2">
               <CardHeader>
                 <div className="mb-4">{feature.icon}</div>
                 <CardTitle>{feature.title}</CardTitle>
