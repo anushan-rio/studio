@@ -1,10 +1,10 @@
 import {
-  Clock,
+  Timer,
   Users,
   CreditCard,
   CalendarCheck,
   LayoutDashboard,
-  Quote,
+  Clock,
 } from "lucide-react";
 import {
   Card,
@@ -15,14 +15,9 @@ import {
 
 const features = [
   {
-    icon: <Clock className="w-8 h-8 text-primary" />,
+    icon: <Timer className="w-8 h-8 text-primary" />,
     title: "Automated Timesheet Management",
     description: "Automatically track employee hours and project time with precision, eliminating manual entry.",
-  },
-  {
-    icon: <Users className="w-8 h-8 text-primary" />,
-    title: "Customer Data Entry",
-    description: "Easily capture, store, and manage customer information in a centralized, accessible database.",
   },
   {
     icon: <CreditCard className="w-8 h-8 text-primary" />,
@@ -35,14 +30,19 @@ const features = [
     description: "Our AI predicts optimal staffing and auto-approves leave requests based on team needs.",
   },
   {
+    icon: <Users className="w-8 h-8 text-primary" />,
+    title: "Customer Data Management",
+    description: "Easily capture, store, and manage customer information in a centralized, accessible database.",
+  },
+  {
     icon: <LayoutDashboard className="w-8 h-8 text-primary" />,
     title: "Interactive Dashboard",
     description: "Get a visual overview of key metrics and insights with our customizable, interactive dashboard.",
   },
   {
-    icon: <Quote className="w-8 h-8 text-primary" />,
-    title: "User Review Display",
-    description: "Showcase customer credibility with animated quotes that highlight user satisfaction.",
+    icon: <Clock className="w-8 h-8 text-primary" />,
+    title: "Live Timesheet Screenshots",
+    description: "Visually track time with automated screenshots in a calendar view for transparency and accuracy.",
   },
 ];
 

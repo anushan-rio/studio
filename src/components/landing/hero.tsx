@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="border-b bg-gradient-to-b from-background to-secondary">
+    <section className="border-b bg-gradient-to-br from-background via-secondary to-accent">
       <div className="container py-24 sm:py-32 lg:py-40">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up">
