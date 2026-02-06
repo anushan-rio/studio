@@ -20,11 +20,6 @@ const features = [
     description: "Automatically track employee hours and project time with precision, eliminating manual entry.",
   },
   {
-    icon: <CreditCard className="w-8 h-8 text-primary" />,
-    title: "Automated Payroll Processing",
-    description: "Streamline payroll calculations and payment distribution, ensuring accuracy and timeliness.",
-  },
-  {
     icon: <CalendarCheck className="w-8 h-8 text-primary" />,
     title: "AI-Powered Leave Management",
     description: "Our AI predicts optimal staffing and auto-approves leave requests based on team needs.",
@@ -38,11 +33,6 @@ const features = [
     icon: <LayoutDashboard className="w-8 h-8 text-primary" />,
     title: "Interactive Dashboard",
     description: "Get a visual overview of key metrics and insights with our customizable, interactive dashboard.",
-  },
-  {
-    icon: <Clock className="w-8 h-8 text-primary" />,
-    title: "Live Timesheet Screenshots",
-    description: "Visually track time with automated screenshots in a calendar view for transparency and accuracy.",
   },
 ];
 
@@ -59,7 +49,7 @@ export function Features() {
             efficiently.
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
           {features.map((feature, index) => (
             <Card 
               key={feature.title} 
