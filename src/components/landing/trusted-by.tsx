@@ -5,7 +5,7 @@ export function TrustedBy() {
 
   return (
     <section className="py-12 bg-secondary/50">
-      <div className="container text-center">
+      <div className="container text-center animate-fade-up">
         <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-8">
           Trusted by the world's best companies
         </h3>

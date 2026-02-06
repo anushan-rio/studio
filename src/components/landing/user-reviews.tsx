@@ -52,7 +52,7 @@ export function UserReviews() {
   return (
     <section className="bg-secondary border-y">
       <div className="container py-20 sm:py-28">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center animate-fade-up">
           <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
             Loved by Teams Everywhere
           </h2>

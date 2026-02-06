@@ -51,7 +51,7 @@ export function PricingTiers() {
   return (
     <section id="pricing" className="py-20 sm:py-28">
       <div className="container">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center animate-fade-up">
           <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
             Choose the Right Plan for Your Team
           </h2>
@@ -60,7 +60,7 @@ export function PricingTiers() {
           </p>
         </div>
 
-        <div className="flex items-center justify-center gap-4 mt-8">
+        <div className="flex items-center justify-center gap-4 mt-8 animate-fade-up" style={{ animationDelay: '200ms' }}>
           <Label htmlFor="billing-cycle">Monthly</Label>
           <Switch
             id="billing-cycle"
@@ -77,7 +77,7 @@ export function PricingTiers() {
           {tiers.map((tier, index) => (
             <Card
               key={tier.name}
-              className={`flex flex-col transition-transform duration-300 hover:-translate-y-2 ${tier.isPopular ? "border-primary ring-2 ring-primary" : ""} animate-fade-up [animation-delay:${200 * (index + 1)}ms]`}
+              className={`flex flex-col transition-transform duration-300 hover:-translate-y-2 ${tier.isPopular ? "border-primary ring-2 ring-primary" : ""} animate-fade-up [animation-delay:${200 * (index + 2)}ms]`}
             >
               <CardHeader className={tier.isPopular ? "bg-primary/5" : ""}>
                 <CardTitle>{tier.name}</CardTitle>
