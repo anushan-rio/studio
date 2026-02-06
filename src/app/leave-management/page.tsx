@@ -4,13 +4,13 @@ import { LeaveRequestForm } from "@/components/leave-request-form";
 export default function LeaveManagementPage() {
   return (
     <DashboardLayout>
-      <div className="mb-8">
+      <div className="mb-8 animate-fade-up">
         <h1 className="text-3xl font-bold">Leave Management</h1>
         <p className="text-muted-foreground">
           Submit a leave request and our AI will review it based on team needs.
         </p>
       </div>
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto animate-fade-up [animation-delay:200ms]">
         <LeaveRequestForm />
       </div>
     </DashboardLayout>

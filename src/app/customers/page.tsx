@@ -36,7 +36,7 @@ export default function CustomersPage() {
 
   return (
     <DashboardLayout>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 animate-fade-up">
         <div>
           <h1 className="text-3xl font-bold">Customers</h1>
           <p className="text-muted-foreground">
@@ -83,7 +83,7 @@ export default function CustomersPage() {
           </DialogContent>
         </Dialog>
       </div>
-      <div className="border rounded-lg">
+      <div className="border rounded-lg animate-fade-up [animation-delay:200ms]">
         <Table>
           <TableHeader>
             <TableRow>
