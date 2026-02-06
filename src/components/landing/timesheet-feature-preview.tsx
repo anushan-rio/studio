@@ -1,5 +1,5 @@
 "use client";
-import { CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const featurePoints = [
   "Log work hours with detailed notes and tags.",
@@ -37,7 +37,7 @@ export function TimesheetFeaturePreview() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <div className="animate-slide-in-from-left">
+            <div className="animate-fade-up">
               <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
                 Intuitive and Flexible Time Tracking
               </h2>
@@ -54,13 +54,9 @@ export function TimesheetFeaturePreview() {
               ))}
             </ul>
           </div>
-          <div className="order-1 md:order-2 animate-slide-in-from-right [animation-delay:200ms]">
+          <div className="order-1 md:order-2 animate-fade-up [animation-delay:200ms]">
             <div className="rounded-xl shadow-2xl ring-1 ring-black/10 bg-card p-4 lg:p-6">
               <div className="flex justify-between items-center mb-4">
-                <div className="flex items-center gap-2">
-                    <button className="p-1 rounded-md hover:bg-accent"><ChevronLeft className="w-5 h-5" /></button>
-                    <button className="p-1 rounded-md hover:bg-accent"><ChevronRight className="w-5 h-5" /></button>
-                </div>
                 <h3 className="font-semibold text-lg">October 2024</h3>
                 <div className="text-sm rounded-md border px-2 py-1 cursor-default">Today</div>
               </div>
@@ -73,10 +69,10 @@ export function TimesheetFeaturePreview() {
                     {item.day && <span className={`text-xs ${item.isToday ? 'font-bold text-primary' : 'text-muted-foreground'}`}>{item.day}</span>}
                     {item.hours && (
                       <div 
-                        className="absolute inset-1 rounded-sm overflow-hidden animate-fade-in flex items-center justify-center" 
+                        className="absolute bottom-1 left-1 right-1 rounded-sm overflow-hidden animate-fade-in" 
                         style={{animationDelay: `${50 * i}ms`}}
                       >
-                        <div className={`flex items-center justify-center w-full h-full rounded-sm ${item.hours > 8 ? 'bg-primary/90' : 'bg-chart-2/90'} text-white text-[10px] sm:text-xs font-bold`}>
+                        <div className={`flex items-center justify-center w-full h-4 rounded-sm ${item.hours > 8 ? 'bg-primary/90' : 'bg-chart-2/90'} text-white text-[9px] font-bold`}>
                             {item.hours}hrs
                         </div>
                       </div>
