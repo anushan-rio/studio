@@ -74,10 +74,10 @@ export function PricingTiers() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {tiers.map((tier) => (
+          {tiers.map((tier, index) => (
             <Card
               key={tier.name}
-              className={`flex flex-col transition-transform duration-300 hover:-translate-y-2 ${tier.isPopular ? "border-primary ring-2 ring-primary" : ""}`}
+              className={`flex flex-col transition-transform duration-300 hover:-translate-y-2 ${tier.isPopular ? "border-primary ring-2 ring-primary" : ""} animate-fade-up [animation-delay:${200 * (index + 1)}ms]`}
             >
               <CardHeader className={tier.isPopular ? "bg-primary/5" : ""}>
                 <CardTitle>{tier.name}</CardTitle>
@@ -86,7 +86,7 @@ export function PricingTiers() {
                   {typeof tier.price === "string" ? (
                     <p className="text-4xl font-bold">{tier.price}</p>
                   ) : (
-                    <div className="flex items-baseline">
+                    <div className="flex items-baseline animate-fade-in" key={isAnnual ? 'annual' : 'monthly'}>
                       <p className="text-4xl font-bold">
                         ${isAnnual ? tier.price.annual / 12 : tier.price.monthly}
                       </p>
