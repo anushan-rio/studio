@@ -19,8 +19,7 @@ export function Footer() {
             <div className="flex flex-col space-y-3 text-sm">
               <h4 className="font-semibold">Product</h4>
               <Link href="/#pricing" className="text-muted-foreground hover:text-foreground">Pricing</Link>
-              <Link href="/dashboard" className="text-muted-foreground hover:text-foreground">Dashboard</Link>
-              <Link href="/features" className="text-muted-foreground hover:text-foreground">Features</Link>
+              <Link href="/#features" className="text-muted-foreground hover:text-foreground">Features</Link>
             </div>
             <div className="flex flex-col space-y-3 text-sm">
               <h4 className="font-semibold">Company</h4>

@@ -21,10 +21,10 @@ const payrollData = [
 
 export function PayrollFeaturePreview() {
   return (
-    <section className="py-20 sm:py-28 bg-secondary/20">
+    <section className="py-20 sm:py-28 bg-secondary/20 overflow-x-hidden">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1 animate-fade-up">
+          <div className="order-2 md:order-1 animate-slide-in-from-left">
             <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
               Automated Payroll, Simplified
             </h2>
@@ -40,7 +40,7 @@ export function PayrollFeaturePreview() {
               ))}
             </ul>
           </div>
-          <div className="order-1 md:order-2 animate-fade-up [animation-delay:400ms]">
+          <div className="order-1 md:order-2 animate-slide-in-from-right [animation-delay:200ms]">
             <Card className="shadow-2xl ring-1 ring-black/10">
                 <CardHeader>
                     <CardTitle className="flex items-center justify-between">
