@@ -15,10 +15,10 @@ export function Header() {
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             <Link
-              href="/#pricing"
+              href="/dashboard"
               className="transition-colors hover:text-foreground/80 text-foreground/60"
             >
-              Pricing
+              Dashboard
             </Link>
           </nav>
         </div>
@@ -39,7 +39,7 @@ export function Header() {
                 </Link>
                 <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                   <div className="flex flex-col space-y-3">
-                    <Link href="/#pricing">Pricing</Link>
+                    <Link href="/dashboard">Dashboard</Link>
                   </div>
                 </div>
               </SheetContent>
@@ -48,7 +48,7 @@ export function Header() {
           <nav className="flex items-center gap-2">
             <ModeToggle />
             <Button asChild>
-              <Link href="/#pricing">Get Started</Link>
+              <Link href="/dashboard">Get Started</Link>
             </Button>
           </nav>
         </div>

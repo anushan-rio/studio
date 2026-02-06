@@ -4,9 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
-  Users,
-  CreditCard,
-  CalendarDays,
   Settings,
   Timer,
 } from "lucide-react";
@@ -24,9 +21,6 @@ import { useSidebar } from "@/components/ui/sidebar";
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/customers", icon: Users, label: "Customers" },
-  { href: "/payroll", icon: CreditCard, label: "Payroll" },
-  { href: "/leave-management", icon: CalendarDays, label: "Leave Management" },
 ];
 
 export function DashboardNav() {
@@ -37,7 +31,7 @@ export function DashboardNav() {
     <>
       <SidebarHeader>
         <div className="flex items-center justify-between">
-          <Link href="/dashboard" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Timer className="w-6 h-6 text-primary" />
             <span className="font-semibold text-lg">TimeFlow</span>
           </Link>

@@ -107,7 +107,7 @@ export function PricingTiers() {
               </CardContent>
               <CardFooter>
                 <Button asChild className="w-full" variant={tier.isPopular ? 'default' : 'outline'}>
-                  <Link href="/login">{tier.cta}</Link>
+                  <Link href="/dashboard">{tier.cta}</Link>
                 </Button>
               </CardFooter>
             </Card>

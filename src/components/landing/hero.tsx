@@ -6,7 +6,7 @@ export function Hero() {
     <section className="border-b bg-gradient-to-br from-background via-secondary to-accent">
       <div className="container py-24 sm:py-32 lg:py-40">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up">
+          <h1 className="text-4xl font-bold font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up">
             Streamline Your Workflow,
             <span className="text-primary"> Unleash Your Team</span>
           </h1>
@@ -17,7 +17,7 @@ export function Hero() {
           </p>
           <div className="mt-10 flex justify-center gap-4 animate-fade-up [animation-delay:400ms]">
             <Button asChild size="lg">
-              <Link href="/login">Get Started for Free</Link>
+              <Link href="/dashboard">Get Started for Free</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/#pricing">View Pricing</Link>
