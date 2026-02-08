@@ -4,9 +4,7 @@ import {
   Timer,
   Users,
   CreditCard,
-  CalendarCheck,
   LayoutDashboard,
-  Clock,
 } from "lucide-react";
 import {
   Card,
@@ -24,13 +22,13 @@ const features = [
     description: "Automatically track employee hours and project time with precision, eliminating manual entry.",
   },
   {
-    icon: <CalendarCheck className="w-8 h-8 text-primary" />,
-    title: "AI-Powered Leave Management",
-    description: "Our AI predicts optimal staffing and auto-approves leave requests based on team needs.",
+    icon: <CreditCard className="w-8 h-8 text-primary" />,
+    title: "Payroll & Employee Details",
+    description: "Streamline payroll calculations, manage employee information, and ensure timely payments.",
   },
   {
     icon: <Users className="w-8 h-8 text-primary" />,
-    title: "Customer Data Management",
+    title: "Customer Data Entry",
     description: "Easily capture, store, and manage customer information in a centralized, accessible database.",
   },
   {
