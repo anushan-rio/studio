@@ -1,8 +1,29 @@
 import Link from "next/link";
-import { Timer, Menu } from "lucide-react";
+import { Timer, Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ModeToggle } from "./mode-toggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const productLinks = [
+  { href: "/timesheet", label: "Timesheet" },
+  { href: "/customers", label: "CRM" },
+  { href: "/projects", label: "Project Management" },
+  { href: "/customers", label: "Customer Entry" },
+  { href: "/leave-management", label: "Leave Management" },
+  { href: "/payroll", label: "Employee Details" },
+];
 
 export function Header() {
   return (
@@ -14,12 +35,19 @@ export function Header() {
             <span className="hidden font-bold sm:inline-block">TimeFlow</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link
-              href="/dashboard"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Dashboard
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="group flex items-center gap-1 transition-colors hover:text-foreground/80 text-foreground/60">
+                Products
+                <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {productLinks.map((link) => (
+                  <DropdownMenuItem key={link.label} asChild>
+                    <Link href={link.href}>{link.label}</Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Link
               href="/#pricing"
               className="transition-colors hover:text-foreground/80 text-foreground/60"
@@ -45,7 +73,20 @@ export function Header() {
                 </Link>
                 <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                   <div className="flex flex-col space-y-3">
-                    <Link href="/dashboard">Dashboard</Link>
+                     <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="products" className="border-b-0">
+                        <AccordionTrigger className="py-2 hover:no-underline">Products</AccordionTrigger>
+                        <AccordionContent>
+                          <div className="flex flex-col space-y-3 pl-4 pt-2">
+                            {productLinks.map((link) => (
+                              <Link key={link.label} href={link.href} className="text-muted-foreground hover:text-foreground">
+                                {link.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                     <Link href="/#pricing">Pricing</Link>
                   </div>
                 </div>

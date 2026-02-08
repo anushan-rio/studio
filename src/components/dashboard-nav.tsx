@@ -6,6 +6,11 @@ import {
   LayoutDashboard,
   Settings,
   Timer,
+  Users,
+  FolderKanban,
+  CalendarCheck,
+  Briefcase,
+  Clock,
 } from "lucide-react";
 import {
   SidebarContent,
@@ -21,6 +26,11 @@ import { useSidebar } from "@/components/ui/sidebar";
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { href: "/timesheet", icon: Clock, label: "Timesheet" },
+  { href: "/projects", icon: FolderKanban, label: "Projects" },
+  { href: "/customers", icon: Users, label: "Customers" },
+  { href: "/leave-management", icon: CalendarCheck, label: "Leave Mgt." },
+  { href: "/payroll", icon: Briefcase, label: "Payroll" },
 ];
 
 export function DashboardNav() {
