@@ -45,7 +45,7 @@ export function Header() {
                   <DropdownMenuItem
                     key={link.label}
                     asChild
-                    className="cursor-pointer p-2 transition-transform duration-200 hover:-translate-y-px"
+                    className="cursor-pointer p-3 transition-all duration-300 hover:pl-5 hover:bg-accent/80"
                   >
                     <Link href={link.href}>{link.label}</Link>
                   </DropdownMenuItem>
