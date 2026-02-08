@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Timer,
   Users,
@@ -12,6 +14,8 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { cn } from "@/lib/utils";
 
 const features = [
   {
@@ -37,10 +41,12 @@ const features = [
 ];
 
 export function Features() {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1, triggerOnce: true });
+
   return (
-    <section id="features" className="py-20 sm:py-28">
+    <section id="features" ref={ref} className="py-20 sm:py-28">
       <div className="container">
-        <div className="max-w-2xl mx-auto text-center animate-fade-up">
+        <div className={cn("max-w-2xl mx-auto text-center", isVisible ? "animate-fade-up" : "opacity-0")}>
           <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
             Everything You Need, All in One Place
           </h2>
@@ -53,8 +59,11 @@ export function Features() {
           {features.map((feature, index) => (
             <Card 
               key={feature.title} 
-              className="p-2 transition-transform duration-300 hover:-translate-y-2 animate-fade-up"
-              style={{ animationDelay: `${200 * (index + 2)}ms` }}
+              className={cn(
+                "p-2 transition-transform duration-300 hover:-translate-y-2",
+                isVisible ? "animate-fade-up" : "opacity-0"
+              )}
+              style={{ animationDelay: isVisible ? `${200 * (index + 2)}ms` : "0ms" }}
             >
               <CardHeader>
                 <div className="mb-4">{feature.icon}</div>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const reviews = [
   {
@@ -33,6 +34,7 @@ const reviews = [
 export function UserReviews() {
   const [currentReview, setCurrentReview] = useState(0);
   const [isFading, setIsFading] = useState(false);
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1, triggerOnce: true });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,10 +52,10 @@ export function UserReviews() {
   const avatar = PlaceHolderImages.find((img) => img.id === review.avatarId);
 
   return (
-    <section className="bg-secondary border-y">
+    <section ref={ref} className="bg-secondary border-y">
       <div className="container py-20 sm:py-28">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="animate-fade-up">
+          <div className={cn(isVisible ? "animate-fade-up" : "opacity-0")}>
             <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
               Loved by Teams Everywhere
             </h2>
@@ -63,8 +65,11 @@ export function UserReviews() {
             </p>
           </div>
           <Card
-            className="mt-10 overflow-hidden animate-fade-up"
-            style={{ animationDelay: "200ms" }}
+            className={cn(
+              "mt-10 overflow-hidden",
+              isVisible ? "animate-fade-up" : "opacity-0"
+            )}
+            style={{ animationDelay: isVisible ? "200ms" : "0ms" }}
           >
             <CardContent
               className={cn(

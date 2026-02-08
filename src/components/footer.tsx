@@ -1,10 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { Timer } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { cn } from "@/lib/utils";
 
 export function Footer() {
+  const [ref, isVisible] = useIntersectionObserver({ triggerOnce: true });
+
   return (
     <footer className="border-t">
-      <div className="container py-12 animate-fade-up">
+      <div ref={ref} className={cn("container py-12", isVisible ? "animate-fade-up" : "opacity-0")}>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="flex flex-col items-start space-y-4">
             <Link href="/" className="flex items-center space-x-2">

@@ -1,5 +1,7 @@
 "use client";
 import { CheckCircle } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { cn } from "@/lib/utils";
 
 const featurePoints = [
   "Log work hours with detailed notes and tags.",
@@ -32,12 +34,14 @@ const calendarDays = Array.from({ length: 35 }, (_, i) => {
 
 
 export function TimesheetFeaturePreview() {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.2, triggerOnce: true });
+
   return (
-    <section className="py-20 sm:py-28 bg-secondary/20 overflow-x-hidden">
+    <section ref={ref} className="py-20 sm:py-28 bg-secondary/20 overflow-x-hidden">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <div className="animate-fade-up">
+          <div className={cn("order-2 md:order-1", isVisible ? "animate-slide-in-from-left" : "opacity-0")}>
+            <div>
               <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
                 Intuitive and Flexible Time Tracking
               </h2>
@@ -47,14 +51,14 @@ export function TimesheetFeaturePreview() {
             </div>
             <ul className="mt-8 space-y-4">
               {featurePoints.map((point, index) => (
-                <li key={index} className="flex items-start animate-fade-up" style={{ animationDelay: `${200 * (index + 2)}ms`}}>
+                <li key={index} className={cn("flex items-start", isVisible ? "animate-fade-up" : "opacity-0")} style={{ animationDelay: isVisible ? `${200 * (index + 2)}ms` : "0ms"}}>
                   <CheckCircle className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-1" />
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="order-1 md:order-2 animate-fade-up [animation-delay:200ms]">
+          <div className={cn("order-1 md:order-2", isVisible ? "animate-slide-in-from-right" : "opacity-0")} style={{ animationDelay: isVisible ? "200ms" : "0ms"}}>
             <div className="rounded-xl shadow-2xl ring-1 ring-black/10 bg-card p-4 lg:p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-semibold text-lg">October 2024</h3>
@@ -69,8 +73,8 @@ export function TimesheetFeaturePreview() {
                     {item.day && <span className={`text-xs ${item.isToday ? 'font-bold text-primary' : 'text-muted-foreground'}`}>{item.day}</span>}
                     {item.hours && (
                       <div 
-                        className="absolute bottom-1 left-1 right-1 rounded-sm overflow-hidden animate-fade-in" 
-                        style={{animationDelay: `${50 * i}ms`}}
+                        className={cn("absolute bottom-1 left-1 right-1 rounded-sm overflow-hidden", isVisible ? "animate-fade-in" : "opacity-0")}
+                        style={{animationDelay: isVisible ? `${50 * i}ms` : '0ms'}}
                       >
                         <div className={`flex items-center justify-center w-full h-4 rounded-sm ${item.hours > 8 ? 'bg-primary/90' : 'bg-chart-2/90'} text-white text-[9px] font-bold`}>
                             {item.hours}hrs

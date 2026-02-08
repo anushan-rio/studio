@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { cn } from "@/lib/utils";
 
 const tiers = [
   {
@@ -47,11 +49,12 @@ const tiers = [
 
 export function PricingTiers() {
   const [isAnnual, setIsAnnual] = useState(false);
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1, triggerOnce: true });
 
   return (
-    <section id="pricing" className="py-20 sm:py-28">
+    <section id="pricing" ref={ref} className="py-20 sm:py-28">
       <div className="container">
-        <div className="max-w-2xl mx-auto text-center animate-fade-up">
+        <div className={cn("max-w-2xl mx-auto text-center", isVisible ? "animate-fade-up" : "opacity-0")}>
           <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
             Choose the Right Plan for Your Team
           </h2>
@@ -60,7 +63,7 @@ export function PricingTiers() {
           </p>
         </div>
 
-        <div className="flex items-center justify-center gap-4 mt-8 animate-fade-up" style={{ animationDelay: '200ms' }}>
+        <div className={cn("flex items-center justify-center gap-4 mt-8", isVisible ? "animate-fade-up" : "opacity-0")} style={{ animationDelay: isVisible ? '200ms' : "0ms" }}>
           <Label htmlFor="billing-cycle">Monthly</Label>
           <Switch
             id="billing-cycle"
@@ -77,7 +80,11 @@ export function PricingTiers() {
           {tiers.map((tier, index) => (
             <Card
               key={tier.name}
-              className={`flex flex-col transition-transform duration-300 hover:-translate-y-2 ${tier.isPopular ? "border-primary ring-2 ring-primary" : ""} animate-fade-up [animation-delay:${200 * (index + 2)}ms]`}
+              className={cn(
+                `flex flex-col transition-transform duration-300 hover:-translate-y-2 ${tier.isPopular ? "border-primary ring-2 ring-primary" : ""}`,
+                isVisible ? "animate-fade-up" : "opacity-0"
+              )}
+              style={{ animationDelay: isVisible ? `${200 * (index + 2)}ms` : "0ms" }}
             >
               <CardHeader className={tier.isPopular ? "bg-primary/5" : ""}>
                 <CardTitle>{tier.name}</CardTitle>
@@ -86,7 +93,7 @@ export function PricingTiers() {
                   {typeof tier.price === "string" ? (
                     <p className="text-4xl font-bold">{tier.price}</p>
                   ) : (
-                    <div className="flex items-baseline animate-fade-in" key={isAnnual ? 'annual' : 'monthly'}>
+                    <div className={cn("flex items-baseline", isVisible ? "animate-fade-in" : "opacity-0")} key={isAnnual ? 'annual' : 'monthly'}>
                       <p className="text-4xl font-bold">
                         ${isAnnual ? tier.price.annual / 12 : tier.price.monthly}
                       </p>

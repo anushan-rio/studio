@@ -4,6 +4,8 @@ import { CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { cn } from "@/lib/utils";
 
 const featurePoints = [
   "Automate complex payroll calculations and tax withholdings.",
@@ -20,11 +22,13 @@ const payrollData = [
 ]
 
 export function PayrollFeaturePreview() {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.2, triggerOnce: true });
+
   return (
-    <section className="py-20 sm:py-28 bg-secondary/20 overflow-x-hidden">
+    <section ref={ref} className="py-20 sm:py-28 bg-secondary/20 overflow-x-hidden">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1 animate-slide-in-from-left">
+          <div className={cn("order-2 md:order-1", isVisible ? "animate-slide-in-from-left" : "opacity-0")}>
             <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
               Automated Payroll, Simplified
             </h2>
@@ -33,14 +37,14 @@ export function PayrollFeaturePreview() {
             </p>
             <ul className="mt-8 space-y-4">
               {featurePoints.map((point, index) => (
-                <li key={index} className="flex items-start animate-fade-up" style={{ animationDelay: `${200 * (index + 2)}ms`}}>
+                <li key={index} className={cn("flex items-start", isVisible ? "animate-fade-up" : "opacity-0")} style={{ animationDelay: isVisible ? `${200 * (index + 2)}ms` : "0ms"}}>
                   <CheckCircle className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-1" />
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="order-1 md:order-2 animate-slide-in-from-right [animation-delay:200ms]">
+          <div className={cn("order-1 md:order-2", isVisible ? "animate-slide-in-from-right" : "opacity-0")} style={{ animationDelay: isVisible ? "200ms" : "0ms" }}>
             <Card className="shadow-2xl ring-1 ring-black/10">
                 <CardHeader>
                     <CardTitle className="flex items-center justify-between">
@@ -52,8 +56,8 @@ export function PayrollFeaturePreview() {
                     {payrollData.map((employee, index) => (
                          <div 
                             key={employee.name} 
-                            className="flex items-center p-2 rounded-lg hover:bg-accent/50 transition-colors animate-fade-up"
-                            style={{ animationDelay: `${150 * (index + 1)}ms`}}
+                            className={cn("flex items-center p-2 rounded-lg hover:bg-accent/50 transition-colors", isVisible ? "animate-fade-up" : "opacity-0")}
+                            style={{ animationDelay: isVisible ? `${150 * (index + 1)}ms` : "0ms"}}
                         >
                             <Avatar className="h-9 w-9">
                                 <AvatarImage src={employee.avatar} alt={employee.name} data-ai-hint="person portrait"/>
