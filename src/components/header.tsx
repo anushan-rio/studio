@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Timer, Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,6 +29,8 @@ const productLinks = [
 ];
 
 export function Header() {
+  const [isProductsMenuOpen, setProductsMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
@@ -35,23 +40,31 @@ export function Header() {
             <span className="hidden font-bold sm:inline-block">TimeFlow</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            <DropdownMenu>
-              <DropdownMenuTrigger className="group flex items-center gap-1 transition-colors hover:text-foreground/80 text-foreground/60">
-                Products
-                <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 p-2">
-                {productLinks.map((link) => (
-                  <DropdownMenuItem
-                    key={link.label}
-                    asChild
-                    className="cursor-pointer p-3 transition-all duration-300 hover:pl-5 hover:bg-accent/80"
-                  >
-                    <Link href={link.href}>{link.label}</Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div
+              onMouseEnter={() => setProductsMenuOpen(true)}
+              onMouseLeave={() => setProductsMenuOpen(false)}
+            >
+              <DropdownMenu
+                open={isProductsMenuOpen}
+                onOpenChange={setProductsMenuOpen}
+              >
+                <DropdownMenuTrigger className="group flex items-center gap-1 transition-colors hover:text-foreground/80 text-foreground/60 outline-none">
+                  Products
+                  <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56 p-2">
+                  {productLinks.map((link) => (
+                    <DropdownMenuItem
+                      key={link.label}
+                      asChild
+                      className="cursor-pointer p-3 transition-all duration-300 hover:pl-5 hover:bg-accent/80"
+                    >
+                      <Link href={link.href}>{link.label}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
             <Link
               href="/#pricing"
               className="transition-colors hover:text-foreground/80 text-foreground/60"
