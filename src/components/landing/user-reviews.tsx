@@ -52,15 +52,20 @@ export function UserReviews() {
   return (
     <section className="bg-secondary border-y">
       <div className="container py-20 sm:py-28">
-        <div className="max-w-3xl mx-auto text-center animate-fade-up">
-          <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
-            Loved by Teams Everywhere
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            See what our customers have to say about their experience with
-            TimeFlow.
-          </p>
-          <Card className="mt-10 overflow-hidden">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="animate-fade-up">
+            <h2 className="text-3xl font-headline tracking-tight sm:text-4xl">
+              Loved by Teams Everywhere
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              See what our customers have to say about their experience with
+              TimeFlow.
+            </p>
+          </div>
+          <Card
+            className="mt-10 overflow-hidden animate-fade-up"
+            style={{ animationDelay: "200ms" }}
+          >
             <CardContent
               className={cn(
                 "p-8 transition-opacity duration-500 ease-in-out",
