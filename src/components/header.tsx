@@ -40,9 +40,13 @@ export function Header() {
                 Products
                 <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="w-56 p-2">
                 {productLinks.map((link) => (
-                  <DropdownMenuItem key={link.label} asChild>
+                  <DropdownMenuItem
+                    key={link.label}
+                    asChild
+                    className="cursor-pointer p-2 transition-transform duration-200 hover:-translate-y-px"
+                  >
                     <Link href={link.href}>{link.label}</Link>
                   </DropdownMenuItem>
                 ))}
@@ -73,13 +77,19 @@ export function Header() {
                 </Link>
                 <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                   <div className="flex flex-col space-y-3">
-                     <Accordion type="single" collapsible className="w-full">
+                    <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="products" className="border-b-0">
-                        <AccordionTrigger className="py-2 hover:no-underline">Products</AccordionTrigger>
+                        <AccordionTrigger className="py-2 hover:no-underline">
+                          Products
+                        </AccordionTrigger>
                         <AccordionContent>
                           <div className="flex flex-col space-y-3 pl-4 pt-2">
                             {productLinks.map((link) => (
-                              <Link key={link.label} href={link.href} className="text-muted-foreground hover:text-foreground">
+                              <Link
+                                key={link.label}
+                                href={link.href}
+                                className="text-muted-foreground hover:text-foreground"
+                              >
                                 {link.label}
                               </Link>
                             ))}
